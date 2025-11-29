@@ -4,30 +4,30 @@ import axios from "axios";
 
 
 const Register = ({ setUser }) => {
-    const [fullName, setFullName] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [redirect, setRedirect] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-//         if (email && password) {
-//             try {
-//                 const { data: userDoc } = await axios.post("/users/login", {
-//                     email,
-//                     password,
-//                 });
+            if (name && email && password) {
+                try {
+                    const { data: userDoc } = await axios.post("/users", {
+                        email,
+                        password,
+                        name,
+                    });
 
-//                 setUser(userDoc)
-//                 setRedirect(true)
-//             } catch (erro) {
-//                 console.error("Erro no login:", erro);
-//                 alert("Email ou senha incorretos!");
-//             }
-//         } else {
-//             alert("Você precisa preencher o email e a senha!");
-//         }
-    };
+                    setUser(userDoc)
+                    setRedirect(true)
+                } catch (error) {
+                    alert(`Deu um erro ao tentar cadastrar o usuário: ${JSON.stringify(error)}`)
+                }
+            } else {
+                alert("Você precisa preencher o email, o nome e a senha!");
+            }
+        };
 
     if (redirect) return <Navigate to="/" />;
 
@@ -40,9 +40,9 @@ const Register = ({ setUser }) => {
                         <input type="text" 
                         placeholder='Digite seu nome' 
                         className='w-full rounded-full border border-gray-300 px-4 py-2' 
-                        value={fullName}
+                        value={name}
                         onChange={(e) => {
-                            setFullName(e.target.value)
+                            setName(e.target.value)
                             }}
                         />
                         <input type="email" 
