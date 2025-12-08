@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Item = () => {
     return (
         <a href='/' className='flex flex-col gap-2'>
