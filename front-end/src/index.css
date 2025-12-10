@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary-400: #FF385C;
-    --color-primary-green: #00A699;
-    --color-primary-400: #FF385C;
+    --color-primary-400: hsl(349, 100%, 61%);
+    --color-primary-500: hsl(349, 100%, 51%);
+    --color-primary-600: hsl(349, 100%, 41%);
     --color-primary-green: #00A699;
     --color-primary-green-light: #00C4A7;
     --color-primary-green-dark: #00857C;
 };
+
+:root {
+    --a: hsl(349, 100%, 61%);
+}
