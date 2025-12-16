@@ -5,6 +5,8 @@ const NewPlace = () => {
     const [title, setTitle] = useState("")
     const [city, setCity] = useState("")
     const [photos, setPhotos] = useState("")
+    const [description, setDescription] = useState("")
+    const [perks, setPerks] = useState([])
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -50,21 +52,49 @@ const NewPlace = () => {
                     />
                     <button className="transition hover:bg-gray-200 border border-gray-300 bg-gray-100 px-4 py-2 rounded-full cursor-pointer">Enviar foto</button>
                 </div>
+            </div>
 
-                <div className="mt-2 grid grid-cols-5 gap-4"> 
-                    <label htmlFor="file" className="flex gap-2 items-center justify-center aspect-square rounded-2xl border border-gray-300 cursor-pointer">
+            <div className="mt-2 grid grid-cols-5 gap-4"> 
+                <label htmlFor="file" className="flex gap-2 items-center justify-center aspect-square rounded-2xl border border-gray-300 cursor-pointer">
+                    <input 
+                    type="file" 
+                    id="file" 
+                    className="hidden"
+                    />
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                    </svg>
+                    Upload
+                </label>
+            </div>
+
+            <div className="flex flex-col gap-1">
+                <label htmlFor="description" className="ml-2 text-2xl font-bold">Descrição</label>
+                <textarea
+                placeholder="Digite o descrição do seu anúncio" 
+                className="border border-gray-300 px-4 py-2 rounded-2xl h-56 resize-none"
+                id="description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                />
+            </div>
+
+            <div className="flex flex-col gap-1">
+                <label htmlFor="perks" className="ml-2 text-2xl font-bold">Comodidades</label>
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
+                    <label htmlFor="wifi" className="flex gap-2 items-center px-4 py-3 rounded-2xl border border-gray-300">
                         <input 
-                        type="file" 
-                        id="file" 
-                        className="hidden"
+                        type="checkbox"
+                        id="wifi"
+                        value={wifi}
+                        onChange={(e) => setPerks((prevValue) => [...prevValue, e.target.value])}
                         />
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
-                            </svg>
-                            Upload
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
+                        </svg>
+                        Wi-fi
                     </label>
                 </div>
-
             </div>
 
         </form>
