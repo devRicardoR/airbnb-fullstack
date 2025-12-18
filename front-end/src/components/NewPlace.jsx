@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Perks from "../components/Perks";
 
 
 const NewPlace = () => {
@@ -6,7 +7,11 @@ const NewPlace = () => {
     const [city, setCity] = useState("")
     const [photos, setPhotos] = useState("")
     const [description, setDescription] = useState("")
-    const [perks, setPerks] = useState([])
+    const [extras, setExtras] = useState("")
+    const [price, setPrice] = useState("")
+    const [checkin, setCheckin] = useState("")
+    const [checkout, setCheckout] = useState("")
+    const [guests, setGuests] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -81,21 +86,76 @@ const NewPlace = () => {
 
             <div className="flex flex-col gap-1">
                 <label htmlFor="perks" className="ml-2 text-2xl font-bold">Comodidades</label>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4">
-                    <label htmlFor="wifi" className="flex gap-2 items-center px-4 py-3 rounded-2xl border border-gray-300">
-                        <input 
-                        type="checkbox"
-                        id="wifi"
-                        value={wifi}
-                        onChange={(e) => setPerks((prevValue) => [...prevValue, e.target.value])}
-                        />
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.288 15.038a5.25 5.25 0 0 1 7.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 0 1 1.06 0Z" />
-                        </svg>
-                        Wi-fi
-                    </label>
-                </div>
+                <Perks />   
             </div>
+
+            <div className="flex flex-col gap-1">
+                <label htmlFor="extras" className="ml-2 text-2xl font-bold">Informações extras</label>
+                <textarea
+                placeholder="Digite o descrição do seu anúncio" 
+                className="border border-gray-300 px-4 py-2 rounded-2xl h-56 resize-none"
+                id="extras"
+                value={extras}
+                onChange={(e) => setExtras(e.target.value)}
+                />
+            </div>
+
+            <div className="flex flex-col gap-1">
+                <h2 className="ml-2 text-2xl font-bold">Restrições e Preço</h2>
+                
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(225px,1fr))] gap-6">
+                    <div className="flex flex-col gap-2">
+                        <label className="ml-2 text-xl font-bold" htmlFor="price">Preço</label>
+                        <input 
+                        type="number" 
+                        placeholder="Adicione um preço" 
+                        className="border border-gray-300 px-4 py-2 rounded-full"
+                        id="price"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label className="ml-2 text-xl font-bold" htmlFor="checkin">Check-in</label>
+                        <input 
+                        type="text" 
+                        placeholder="Horário de check-in" 
+                        className="border border-gray-300 px-4 py-2 rounded-full"
+                        id="checkin"
+                        value={checkin}
+                        onChange={(e) => setCheckin(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label className="ml-2 text-xl font-bold" htmlFor="checkout">Check-out</label>
+                        <input 
+                        type="text" 
+                        placeholder="Horário de check-out" 
+                        className="border border-gray-300 px-4 py-2 rounded-full"
+                        id="checkout"
+                        value={checkout}
+                        onChange={(e) => setCheckout(e.target.value)}
+                        />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label className="ml-2 text-xl font-bold" htmlFor="guests">Número de convidados</label>
+                        <input 
+                        type="number" 
+                        placeholder="Adicione o número de convidados" 
+                        className="border border-gray-300 px-4 py-2 rounded-full"
+                        id="guests"
+                        value={guests}
+                        onChange={(e) => setGuests(e.target.value)}
+                        />
+                    </div>
+                </div>
+
+            </div>
+
+            <button className='hover:bg-primary-600 bg-primary-400 min-w-32 gap-2 rounded-full px-4 py-2 transition text-white cursor-pointer'>Salvar informações</button>
 
         </form>
     )
