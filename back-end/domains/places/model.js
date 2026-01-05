@@ -1,9 +1,17 @@
 import mongoose from "mongoose";
 
 const placeSchema = new mongoose.Schema({
-    name: String,
-    email: { type: String, unique: true },
-    password: String,
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    title: String,
+    city: String,
+    photos: [String],
+    description: String,
+    extras: String,
+    perks: [String],
+    price: Number,
+    checkin: String,
+    checkout: String,
+    guests: Number,
 });
 
-export default mongoose.model("", placeSchema);
+export default mongoose.model("Place", placeSchema);

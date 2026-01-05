@@ -13,7 +13,7 @@ const NewPlace = () => {
     const [checkout, setCheckout] = useState("")
     const [guests, setGuests] = useState("")
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const newPlace = await axios.post("/places", {
             
