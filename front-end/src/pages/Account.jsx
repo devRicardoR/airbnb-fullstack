@@ -1,15 +1,19 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import AccProfile from '../components/AccProfile';
 import AccPlaces from '../components/AccPlaces';
+import { useUserContext } from '../contexts/UserContext';
 
 const Account = () => {
   const { subpage } = useParams()
+  const { user } = useUserContext()
 
   const buttonClass = (button) => {
     let finalClass = 'hover:bg-primary-400 rounded-full px-4 py-2 transition hover:text-white cursor-pointer'
     if (button === subpage) finalClass += " bg-primary-400 text-white"
     return finalClass
   }
+
+  if(!user) return <Navigate to="/login" /> 
 
   return (
       <section className='p-8'>
