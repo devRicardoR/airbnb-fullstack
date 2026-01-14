@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const PhotoUploader = ({ photoslink, setPhotoslink, setPhotos, photos }) => {
+const PhotoUploader = ({ photoslink, setPhotosLink, setPhotos, photos }) => {
 
     const uploadByLink = async (e) => {
         e.preventDefault()
@@ -27,14 +27,22 @@ const PhotoUploader = ({ photoslink, setPhotoslink, setPhotos, photos }) => {
                     className="border border-gray-300 px-4 py-2 rounded-full grow"
                     id="photoslink"
                     value={photoslink}
-                    onChange={(e) => setPhotoslink(e.target.value)}
+                    onChange={(e) => setPhotosLink(e.target.value)}
                     />
                     <button onClick={uploadByLink} className="transition hover:bg-gray-200 border border-gray-300 bg-gray-100 px-4 py-2 rounded-full cursor-pointer">Enviar foto</button>
                 </div>
             </div>
 
             <div className="mt-2 grid grid-cols-5 gap-4">
-                <img src="" alt="" />
+                {photos.map((photo) => (
+                    <img 
+                    className="aspect-square rounded-2xl object-cover" 
+                    src={`${axios.defaults.baseURL}/tmp/${photo}`} 
+                    alt="Imagem da acomadação"
+                    key={photo}
+                    />
+                ))}
+                
 
                 <label htmlFor="file" className="flex gap-2 items-center justify-center aspect-square rounded-2xl border border-gray-300 cursor-pointer">
                     <input 

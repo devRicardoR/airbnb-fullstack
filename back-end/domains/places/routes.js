@@ -2,7 +2,7 @@ import { Router } from "express";
 import Place from "./model.js";
 import { JWTVerify } from "../../utils/jwt.js";
 import { downloadImage } from "../../utils/imageDownloader.js";
-import { __dirname } from "../../index.js";
+import { __dirname } from "../../server.js";
 
 const router = Router();
 

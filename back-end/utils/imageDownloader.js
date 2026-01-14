@@ -18,7 +18,7 @@ export const downloadImage = async (link, destination) => {
 
             await download.image(options)
 
-            return fullPath
+            return filename
 
         } catch (error) {
             throw error
