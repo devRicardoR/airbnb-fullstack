@@ -54,4 +54,8 @@ router.post("/upload/link", async (req, res) => {
     }
 })
 
+router.post('/upload', async (req, res) => {
+
+});
+
 export default router;
